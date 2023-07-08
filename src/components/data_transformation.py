@@ -15,7 +15,7 @@ from sklearn.model_selection import train_test_split, cross_val_score, GridSearc
 from sklearn.model_selection import RandomizedSearchCV
 
 from sklearn import metrics, preprocessing
-from keras.models import Model
+#from keras.models import Model
 from sklearn.preprocessing import LabelEncoder
 import category_encoders as ce
 

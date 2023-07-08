@@ -7,5 +7,6 @@ matplotlib
 hyperopt
 pandas
 numpy
+#tensorflow
 Flask
 -e .
