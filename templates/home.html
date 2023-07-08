@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Car Price Prediction</h1>
+    <form action="/predictdata" method="POST">
+        <label for="miles">Miles:</label>
+        <input type="text" id="miles" name="miles" required><br>
+
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required><br>
+
+        <label for="make">Make:</label>
+        <input type="text" id="make" name="make" required><br>
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required><br>
+
+        <label for="trim">Trim:</label>
+        <input type="text" id="trim" name="trim" required><br>
+
+        <label for="body_type">Body Type:</label>
+        <input type="text" id="body_type" name="body_type" required><br>
+
+        <label for="vehicle_type">Vehicle Type:</label>
+        <input type="text" id="vehicle_type" name="vehicle_type" required><br>
+
+        <label for="drivetrain">Drivetrain:</label>
+        <input type="text" id="drivetrain" name="drivetrain" required><br>
+
+        <label for="transmission">Transmission:</label>
+        <input type="text" id="transmission" name="transmission" required><br>
+
+        <label for="fuel_type">Fuel Type:</label>
+        <input type="text" id="fuel_type" name="fuel_type" required><br>
+
+        <label for="engine_size">Engine Size:</label>
+        <input type="text" id="engine_size" name="engine_size" required><br>
+
+        <label for="engine_block">Engine Block:</label>
+        <input type="text" id="engine_block" name="engine_block" required><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br>
+
+        <input type="submit" value="Predict">
+    </form>
+    
+    {% if results %}
+        <h2>Prediction Result:</h2>
+        <p>{{ results }}</p>
+    {% endif %}
+</body>
+</html>

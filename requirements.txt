@@ -1,0 +1,11 @@
+scikit-learn
+pandas-profiling
+scipy
+keras
+category_encoders
+matplotlib
+hyperopt
+pandas
+numpy
+Flask
+-e .
