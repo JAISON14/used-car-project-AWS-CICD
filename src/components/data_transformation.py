@@ -279,11 +279,6 @@ class DataTransformation:
 
                 )
             
-            # Load the encoder from the pickle file
-            '''encoder_path: str=os.path.join('artifacts',"encoder.pkl")
-            with open(encoder_path, 'rb') as file:
-                encoder = pickle.load(file)    
-            encoder = joblib.load('encoder.joblib')'''
 
             # Transform the categorical features in the training data
             X_train_encoded = encoder.transform(X_train)
@@ -294,29 +289,8 @@ class DataTransformation:
 
     def target_encode_regression_test(self,X_train):
         try:
-            '''# Initialize a TargetEncoder object
-            encoder = ce.TargetEncoder(cols=X_train.select_dtypes(include='object').columns)
-            
-            # Fit the encoder on the training data
-            encoder.fit(X_train, y_train)
-            
-            with open('encoder.pkl', 'wb') as file:
-                pickle.dump(encoder, file)
-            joblib.dump(encoder, 'encoder.joblib')
-
-            save_object(
-
-                        file_path=os.path.join('artifacts',"encoder.pkl"),
-                        obj=encoder
-
-                )'''
             
             # Load the encoder from the pickle file
-            '''encoder_path: str=os.path.join('artifacts',"encoder.pkl")
-            with open(encoder_path, 'rb') as file:
-                encoder = pickle.load(file)    
-            encoder = joblib.load('encoder.joblib')'''
-
             encoder = load_object(file_path=os.path.join('artifacts',"encoder.pkl"))
             # Transform the categorical features in the training data
             X_train_encoded = encoder.transform(X_train)
@@ -360,13 +334,7 @@ class DataTransformation:
             logging.info("Target Encoding completed")
             X_train, y_train = self.scaling_features(X_train_encoded, y_train)
 
-            with open('X_train.pkl', 'wb') as file:
-                pickle.dump(X_train, file)
-            joblib.dump(X_train, 'X_train.joblib')
-
-            with open('X_train', 'wb') as file:
-                pickle.dump(y_train, file)
-            joblib.dump(y_train, 'y_train.joblib')
+            
             
             save_object(
 
@@ -415,14 +383,6 @@ class DataTransformation:
             X_test = self.scaling_features_test(X_test)
             logging.info("Read train and test data completed")
 
-            with open('X_test.pkl', 'wb') as file:
-                pickle.dump(X_test, file)
-            joblib.dump(X_test, 'X_test.joblib')
-
-            with open('y_test.pkl', 'wb') as file:
-                pickle.dump(y_test, file)
-            joblib.dump(y_test, 'y_test.joblib')
-
             save_object(
 
                 file_path=os.path.join('artifacts',"X_test.pkl"),
@@ -435,17 +395,9 @@ class DataTransformation:
                 obj=y_test
 
             )  
-            # Load the pickle file
-            #with open('notebook\data\X_train (2).pkl', 'rb') as file:
-             #   loaded_object = pickle.load(file)
-            #loaded_object = joblib.load('notebook\data\X_train_cleaned.joblib')
+            
 
-            '''
-            X_train = load_object(file_path=os.path.join('artifacts',"X_train.pkl"))
-            y_train = load_object(file_path=os.path.join('artifacts',"y_train.pkl"))
-            X_test = load_object(file_path=os.path.join('artifacts',"X_test2.pkl"))
-            y_test = load_object(file_path=os.path.join('artifacts',"y_test2.pkl"))
-            '''
+
             return (
                 X_train,
                 y_train,

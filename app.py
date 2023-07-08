@@ -35,7 +35,7 @@ def predict_datapoint():
         engine_block=request.form.get('engine_block'),
         seller_name= "seller_name",
         street= "street",
-        city=request.form.get('city'),
+        city="city",
         state=request.form.get('state'),
         zip= "zip"
     )
