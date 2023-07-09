@@ -16,25 +16,26 @@ class PredictPipeline:
 
                 print("Before Loading")
                 model=load_object(file_path=model_path)
-
+                print("Model Loaded")
                 data_transformation=DataTransformation()
+                print("Data cleaning started")
                 features =data_transformation.impute_numerical_features_test(features)
                 features = data_transformation.remove_NaN_from_categorical_features(features)
-
+                print("Feature Engineering started")
                 # Feature Enggineering
                 features = data_transformation.create_new_features(features)
                 columns_to_transform = ['miles','miles_per_year']
                 features =data_transformation.log_transform(features,columns_to_transform) 
-
+                print("Feature selection started")
                 columns_to_remove = ['street','seller_name','year','zip','trim']
                 # Remove columns from the train_df DataFrame
                 features = features.drop(columns=columns_to_remove)
-
+                print("Feature encoding started")
                 categorical_features = features.select_dtypes(include='object').columns.tolist()
                 features = data_transformation.target_encode_regression_test(features)
-
+                print("Feature scaling started")
                 features = data_transformation.scaling_features_test(features)
-
+                print("Predicting price")
                 preds=model.predict(features)
                 return preds
 
