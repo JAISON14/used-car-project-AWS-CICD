@@ -2,6 +2,8 @@
 
 -> Developed an end-to-end data science project to predict the prices of Canadian used cars using a dataset of over 225k cars, sourced from MarketCheck, which aggregates inventory from over 65k dealer websites across the US and Canada.
 
+-> Dataset Link: https://www.kaggle.com/datasets/rupeshraundal/marketcheck-automotive-data-us-canada 
+
 -> Employed a wide range of regression algorithms, evaluating 14 different models to identify the most effective approach. Identified BaggingRegressor as the optimal algorithm, delivering superior price predictions.
 
 -> Created a user-friendly web application using Flask, providing an intuitive interface for users to input car details and receive price predictions based on the trained model.
