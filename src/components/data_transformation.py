@@ -41,7 +41,7 @@ class DataTransformation:
 
     def preliminary_data_cleaning(self,data):
         '''
-        This function is responsible for data trnasformation
+        This function is responsible for preliminary data cleaning.
         
         '''
         try:
@@ -90,15 +90,7 @@ class DataTransformation:
 
                 # Fit the imputer on the numerical features
                 imputer.fit(numerical_features)
-                #knn_imputer_path = 'artifacts/knn_imputer (1).joblib'
-                #knn_imputer_path: str=os.path.join('artifacts',"knn_imputer.joblib")
-                #logging.info(knn_imputer_path)
-                '''with open(knn_imputer_path, 'rb') as file:
-                    imputer = pickle.load(file)
-            
 
-                # Load the KNNImputer object from joblib file
-                imputer = joblib.load('knn_imputer.joblib') '''
                 #Apply the imputer to the numerical features
                 imputed_data = imputer.transform(numerical_features)
 
@@ -107,11 +99,8 @@ class DataTransformation:
 
                 # Replace the original numerical features in the data with the imputed values
                 data[numerical_features.columns] = imputed_df
+                
                 # Save the imputer to a pickle file
-                with open('knn_imputer.pkl', 'wb') as file:
-                    pickle.dump(imputer, file)
-                joblib.dump(imputer, 'knn_imputer.joblib')
-
                 save_object(
 
                         file_path=os.path.join('artifacts',"knn_imputer.pkl"),
@@ -155,7 +144,7 @@ class DataTransformation:
 
     def remove_NaN_from_categorical_features(self,data):
         '''
-        This function is responsible for data trnasformation
+        This function is responsible for removing NaN values from categorical features
         
         '''
         try:
@@ -208,12 +197,8 @@ class DataTransformation:
             # Scale the numerical features
             scaler = StandardScaler()
             scaler.fit(data[numerical_features])
-            
-            
+                       
             # Save the scaler to a pickle file
-            with open('scaler.pkl', 'wb') as file:
-                pickle.dump(scaler, file)
-            joblib.dump(scaler, 'scaler.joblib')
             save_object(
 
                         file_path=os.path.join('artifacts',"scaler.pkl"),
@@ -221,12 +206,6 @@ class DataTransformation:
 
                 )
             
-
-            # Load the encoder from the pickle file
-            '''scaler_path: str=os.path.join('artifacts',"scaler.pkl")
-            with open(scaler_path, 'rb') as file:
-                scaler = pickle.load(file)  '''
-
             scaled_data = scaler.transform(data[numerical_features])
                 
             # Create a new DataFrame with the scaled numerical features
@@ -240,12 +219,6 @@ class DataTransformation:
     def scaling_features_test(self,data):
         try:    
             numerical_features = data.select_dtypes(include=np.number).columns.tolist()
-
-            '''# Remove rows containing infinity or extremely large values
-            data = data.replace([np.inf, -np.inf], np.nan)
-            data = data.dropna(subset=numerical_features, how='any')
-            
-            y_train = y_train.loc[data.index]'''
 
             # Load the encoder from the pickle file
             scaler = load_object(file_path=os.path.join('artifacts',"scaler.pkl"))
